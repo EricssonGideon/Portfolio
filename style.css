@@ -173,8 +173,10 @@ nav a:hover, nav a.active {
     border-bottom: 3px solid #b74b4b;
 }
 
+
 /* Responsive header nav */
-(max-width:995px) {
+@media (max-width: 995px) {
+
     nav {
         position: absolute;
         display: none;
@@ -1014,7 +1016,7 @@ h1{font-size:3.2rem;}.project-card .thumb{height:14rem;}}
 @keyframes fillSkill { from { width: 0; } to { width: 100%; } }
 
 
-//* ==============================================
+/* ==============================================
    Google Fonts & Global education page
 ============================================== */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');

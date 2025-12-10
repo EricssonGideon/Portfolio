@@ -1,0 +1,539 @@
+/* ==============================================
+   MasterClass Redesign Variables and Reset
+============================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap');
+
+:root {
+    /* Color Palette: Dark, High Contrast, Muted Accent */
+    --color-bg-dark: #0f0f0f;        /* Deep Black/Very Dark Gray */
+    --color-text-light: #f5f5f5;     /* Near White */
+    --color-text-muted: #aaaaaa;     /* Soft Gray */
+    --color-accent-main: #b74b4b;    /* Your Original Red (Used as an Accent) */
+    --color-accent-subtle: #4a1d1d;  /* Darker shade for borders/hover backgrounds */
+    --font-primary: 'Inter', sans-serif; /* Cleaner, modern font */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-primary);
+}
+
+html { 
+    font-size: 62.5%; /* Standard 10px base for easier rem calculation (1.6rem = 16px) */
+} 
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-light);
+    overflow-x: hidden;
+    padding-top: 70px; /* Add padding for fixed header */
+}
+
+/* Global Typography Refinements */
+p {
+    color: var(--color-text-muted); /* Mute body text for contrast */
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ==============================================
+   Header (Clean & Minimal)
+============================================== */
+/* ==============================================
+   Header
+============================================== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    z-index: 100;
+}
+
+/* Mobile Header Logo */
+.logo {
+    font-size: 2.8rem;       /* slightly smaller than desktop */
+    color: #b74b4b;          /* desktop red color */
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.5s ease;
+    text-decoration: none;    /* removes any underline */
+}
+.logo:hover { transform: scale(1.1); }
+
+/* Hamburger Icon */
+.hamburger {
+    font-size: 2.5rem;
+    color: white;
+    cursor: pointer;
+}
+
+nav.navbar {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 25%;
+    background-color: #161616;
+    display: none;
+    flex-direction: column;
+    padding: 2rem;
+    border-left: 3px solid #b74b4b;
+    border-bottom: 3px solid #b74b4b;
+    border-bottom-left-radius: 2rem;
+    gap: 2rem;
+}
+nav.navbar.active { display: flex; }
+
+nav.navbar a {
+    color: white;
+    font-size: 2rem;
+    font-weight: 650;
+    border-bottom: px solid transparent;
+}
+nav.navbar a:hover, nav.navbar a.active {
+    color: #b74b4b;
+    border-bottom: 3px solid #b74b4b;
+}
+
+nav a {
+    text-decoration: none;
+    position: relative;
+    display: inline; /* make width match text exactly */
+    padding: 0;      /* remove extra padding that stretches the line */
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;       /* slight gap below text */
+    width: 100%;
+    height: 2px;        /* thickness of line */
+    background: #b74b4b;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+nav a:hover::after,
+nav a.active::after {
+    transform: scaleX(1);
+}
+
+/* ==============================================
+   Projects Hero Section (High-Impact MasterClass Look)
+============================================== */
+.projects-hero {
+    /* Use padding to create "white space" around content */
+    padding: 5rem 5% 8rem; 
+    text-align: center;
+    position: relative;
+    /* MasterClass often uses a darker, focused area for the hero */
+}
+
+/* 💥 CHANGE: Revert to two-column for larger screens, but give text dominance on mobile */
+.projects-hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-text-image {
+    display: flex;
+    flex-direction: column-reverse; /* Text on top for mobile */
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem; 
+    width: 100%;
+}
+
+.hero-text {
+    width: 100%; 
+    text-align: center;
+}
+
+.hero-text h1 {
+    font-size: 5.5rem; /* Larger, more impactful title */
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+}
+
+.hero-text h1 span {
+    color: var(--color-accent-main);
+    /* Subtle text shadow for depth */
+    text-shadow: 0 0 5px rgba(183, 75, 75, 0.5); 
+}
+
+.hero-text p {
+    font-size: 1.8rem; /* Larger, more readable body copy */
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin: 1.5rem auto;
+    max-width: 600px;
+}
+
+.hero-image {
+    width: 100%; 
+    max-width: 500px; /* Larger image area */
+    text-align: center;
+}
+
+.hero-image img {
+    max-width: 100%; 
+    height: auto;
+    border-radius: 1.2rem;
+    /* Subtle box shadow */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 10px var(--color-accent-subtle);
+    transition: transform 0.5s ease;
+}
+
+.hero-image img:hover {
+    transform: scale(1.02); /* Subtle hover for polish */
+}
+
+/* Scroll indicators (Re-enabled for desktop, hidden on mobile for cleaner look) */
+.scroll-indicators {
+    display: none; 
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+/* ==============================================
+   Projects Grid (MasterClass Cards)
+============================================== */
+.projects {
+    padding: 4rem 5% 8rem;
+}
+
+.projects-grid {
+    /* 💥 CHANGE: Use CSS GRID for a robust, multi-column layout */
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem; /* Increased spacing between cards */
+    max-width: 1200px;
+    margin: 3rem auto 0;
+}
+
+.project-card {
+    /* Cleaner, less noisy background */
+    background: #1a1a1a; 
+    border: 1px solid #333; /* Darker, subtler border */
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother transition */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.project-card:hover {
+    transform: translateY(-8px); /* Deeper lift on hover */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 15px var(--color-accent-subtle);
+    background: #222; /* Slightly lighter background on hover */
+}
+
+.project-card .thumb {
+    overflow: hidden;
+}
+
+.project-card .thumb img {
+    width: 100%;
+    height: 22rem; /* Taller image for better visual impact */
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+/* Subtle image zoom on card hover */
+.project-card:hover .thumb img {
+    transform: scale(1.05); 
+}
+
+.card-body {
+    padding: 2.5rem; /* More generous padding */
+}
+
+.card-body h3 {
+    font-size: 2.2rem; 
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    color: var(--color-text-light);
+}
+.card-body p {
+    font-size: 1.5rem; 
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* Action Buttons (Refined Styling) */
+.modal-actions {
+    display: flex;
+    justify-content: space-between; /* Space out the buttons */
+    gap: 1.5rem;
+}
+.modal-actions .btn {
+    padding: 1.2rem 2rem; 
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    flex-grow: 1; 
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.modal-actions .btn:first-child {
+    background: var(--color-accent-main);
+    color: var(--color-bg-dark); /* Dark text on main CTA */
+}
+.modal-actions .btn:first-child:hover {
+    background: #ff6666; /* Lighter red on hover */
+}
+.modal-actions .btn.ghost {
+    background: transparent;
+    color: var(--color-accent-main); /* Red text */
+    border: 1px solid var(--color-accent-main); /* Red outline */
+}
+.modal-actions .btn.ghost:hover {
+    background: var(--color-accent-subtle); /* Darker red background on hover */
+    color: var(--color-text-light);
+}
+
+/* Back to Home Button (Refined) */
+.projects-home-btn {
+    text-align: center;
+    padding-bottom: 6rem;
+}
+.projects-home-btn .btn {
+    padding: 1.5rem 3rem;
+    font-size: 1.8rem;
+    background: var(--color-text-muted); /* Use a neutral color here */
+    color: var(--color-bg-dark);
+    font-weight: 700;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.projects-home-btn .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    background: #ccc;
+}
+
+
+/* ==============================================
+   Chatbot Button (MasterClass Style)
+============================================== */
+/* Chatbot Floating Button */
+.chatbot-button {
+    position: fixed;
+    bottom: 30px;
+    left: 20px;          /* left side */
+    right: auto;
+    width: 55px;
+    height: 55px;
+    background: #ff004f;
+    color: #fff;
+    font-size: 26px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 0, 79, 0.6);
+    transition: all 0.3s ease;
+    z-index: 9999;
+}
+.chatbot-button:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 0 25px rgba(255, 0, 79, 0.8);
+}
+
+/* Chatbot Window */
+.chatbot-box {
+    position: fixed;
+    bottom: 90px;
+    left: 20px;
+    right: auto;
+    width: 320px;          /* desktop: 320px, mobile you can reduce */
+    max-width: 90%;
+    height: 450px;
+    background: #111;
+    color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(255, 0, 79, 0.4);
+    display: none;         /* hidden initially */
+    flex-direction: column;
+    overflow: hidden;
+    animation: fadeIn 0.4s ease;
+    z-index: 9999;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Chatbot header */
+.chatbot-header {
+    background: linear-gradient(90deg, #ff004f, #b74b4b);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: white;
+    cursor: default;
+}
+.chatbot-header span {
+    font-size: 22px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.chatbot-header span:hover {
+    color: #000;
+}
+
+/* Chat content */
+.chatbot-content {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    scroll-behavior: smooth;
+}
+
+/* Messages */
+.bot-message, .user-message {
+    padding: 10px 14px;
+    max-width: 80%;
+    border-radius: 12px;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+.bot-message {
+    background: #222;
+    align-self: flex-start;
+    box-shadow: 0 0 10px #b74b4b50;
+}
+.user-message {
+    background: #ff004f;
+    color: white;
+    align-self: flex-end;
+    box-shadow: 0 0 10px #ff004f80;
+}
+
+/* Typing dots animation */
+.bot-message .dots {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+    border-radius: 50%;
+    background: #b74b4b;
+    animation: bounce 0.6s infinite alternate;
+}
+.bot-message .dots:nth-child(2) { animation-delay: 0.2s; }
+.bot-message .dots:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce {
+    to { transform: translateY(-5px); }
+}
+
+/* Chat input area */
+.chatbot-input-area {
+    display: flex;
+    padding: 10px;
+    background: #151515;
+    border-top: 1px solid #333;
+}
+.chatbot-input-area input {
+    flex: 1;
+    padding: 10px 12px;
+    background: #222;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1.4rem;
+}
+.chatbot-input-area input:focus {
+    outline: 2px solid #b74b4b;
+}
+.chatbot-input-area button {
+    margin-left: 8px;
+    padding: 10px 16px;
+    background: #ff004f;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.chatbot-input-area button:hover {
+    background: #b74b4b;
+    transform: scale(1.05);
+}
+
+/* Fade-in animation for chatbot */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive tweaks */
+@media screen and (max-width: 600px) {
+    .chatbot-box {
+        width: 280px;
+        height: 400px;
+        bottom: 70px;
+    }
+    .chatbot-button {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+}
+
+/* ==============================================
+   Media Queries (Desktop Refinements)
+============================================== */
+@media (min-width: 768px) {
+    
+    .hero-text-image {
+        /* Side-by-side layout for desktop */
+        flex-direction: row; 
+        text-align: left;
+        padding-top: 5rem;
+    }
+    
+    .hero-text {
+        width: 50%; 
+        text-align: left;
+    }
+
+    .hero-text h1 {
+        font-size: 7rem; /* Even larger on desktop */
+    }
+
+    .hero-text p {
+        margin-left: 0;
+    }
+    
+    .hero-image {
+        width: 50%;
+        max-width: none;
+    }
+
+    /* Re-enable subtle scroll indicators for desktop/larger screens */
+    .scroll-indicators {
+        display: block;
+    }
+
+}

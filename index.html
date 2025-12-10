@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+  <script>
+    // Auto-detect mobile devices and redirect
+    (function() {
+        // Check for mobile by screen width
+        const isMobile = window.innerWidth <= 995; // you can adjust the breakpoint
+  
+        // Or you can use navigator.userAgent (optional)
+        // const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  
+        if (isMobile) {
+            // Redirect to mobile folder
+            window.location.href = "mobile/index.html";
+        }
+    })();
+  </script>
+  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ericsson Portfolio</title>

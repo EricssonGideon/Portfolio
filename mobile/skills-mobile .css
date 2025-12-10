@@ -1,0 +1,313 @@
+/* ==============================================
+   Google Fonts & Global Reset
+============================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html { font-size: 55%; } /* slightly smaller for mobile */
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: black;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* ==============================================
+   Header
+============================================== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    z-index: 100;
+}
+
+/* Mobile Header Logo */
+.logo {
+    font-size: 2.8rem;       /* slightly smaller than desktop */
+    color: #b74b4b;          /* desktop red color */
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.5s ease;
+    text-decoration: none;    /* removes any underline */
+}
+.logo:hover { transform: scale(1.1); }
+
+/* Hamburger Icon */
+.hamburger {
+    font-size: 2.5rem;
+    color: white;
+    cursor: pointer;
+}
+
+nav.navbar {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 25%;
+    background-color: #161616;
+    display: none;
+    flex-direction: column;
+    padding: 2rem;
+    border-left: 3px solid #b74b4b;
+    border-bottom: 3px solid #b74b4b;
+    border-bottom-left-radius: 2rem;
+    gap: 2rem;
+}
+nav.navbar.active { display: flex; }
+
+nav.navbar a {
+    color: white;
+    font-size: 2rem;
+    font-weight: 650;
+    border-bottom: px solid transparent;
+}
+nav.navbar a:hover, nav.navbar a.active {
+    color: #b74b4b;
+    border-bottom: 3px solid #b74b4b;
+}
+
+nav a {
+    text-decoration: none;
+    position: relative;
+    display: inline; /* make width match text exactly */
+    padding: 0;      /* remove extra padding that stretches the line */
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;       /* slight gap below text */
+    width: 100%;
+    height: 2px;        /* thickness of line */
+    background: #b74b4b;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+nav a:hover::after,
+nav a.active::after {
+    transform: scaleX(1);
+}
+
+/* Skills Section */
+.skills-section {
+    padding: 10rem 9% 5rem;
+    min-height: 100vh;
+}
+
+.section-title {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #b74b4b;
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+/* Grid Layout */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 7rem;
+}
+
+/* Skill Card */
+.skill-card {
+    background: #111;
+    padding: 2rem;
+    border-radius: 20px;
+    border: 2px solid #b74b4b;
+    box-shadow: 0 0 5px #b74b4b;
+    transition: .3s;
+}
+
+.skill-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px #b74b4b;
+}
+
+/* Image */
+.skill-img {
+    width: 100%;
+    height: 180px;
+    border-radius: 15px;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    border: 2px solid #b74b4b;
+    box-shadow: 0 0 100px #b74b4b;
+}
+
+/* Title */
+.skill-card h3 {
+    font-size: 2rem;
+    color: #b74b4b;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.skill-card ul {
+    list-style: none;
+    margin-top: .5rem;
+    
+}
+
+.skill-card ul li {
+    font-size: 1.4rem;
+    margin: .4rem 0;
+    color: #ccc;
+    text-align: center;
+}
+
+/* Back Button */
+.back-btn-container {
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.back-btn {
+    display: inline-block;
+    background: #b74b4b;
+    padding: 1rem 3rem;
+    font-size: 1.6rem;
+    color: #fff;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: 0.3s;
+    box-shadow: 0 0 10px #b74b4b;
+}
+
+.back-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px #b74b4b;
+}
+
+/* ============================
+   SKILLS PAGE
+=============================== */
+
+.skills-section {
+    padding-top: 12rem;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.page-sub {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #ccc;
+    margin-bottom: 5rem;
+}
+
+.skill-box {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    background: #111;
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    margin-bottom: 4rem;
+    border: 2px solid #b74b4b;
+    box-shadow: 0 0 15px #b74b4b55;
+}
+
+.skill-box:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.skill-photo {
+    width: 260px;
+    height: 260px;
+    border-radius: 1.5rem;
+    object-fit: cover;
+    border: 2px solid #b74b4b;
+}
+
+.skill-content h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #b74b4b;
+}
+
+.skill-content ul {
+    font-size: 1.8rem;
+    list-style: none;
+    line-height: 3.2rem;
+}
+
+.back-btn {
+    text-align: center;
+    margin-top: 4rem;
+}
+/* Back Button (Anchor Tag) */
+.back-btn {
+    display: inline-block;
+    background: #b74b4b;
+    padding: 0.75rem 2rem; 
+    font-size: 1.4rem; 
+    color: #fff;
+    border-radius: 25px; 
+    font-weight: 600;
+    transition: 0.3s;
+    box-shadow: 0 0 8px #b74b4b;
+    
+    /* 💥 THIS IS THE FIX: Remove the default underline */
+    text-decoration: none;
+}
+
+.back-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #b74b4b;
+}
+
+.white-text {
+    color: white;
+  }
+  
+  .red-text {
+    color: #b74b4b;
+  }
+  
+  header {
+    background: #000 !important;
+    backdrop-filter: none !important;
+}
+
+header {
+    width: 100%;
+    padding: 1rem 9%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1000;
+
+    /* Apple Glass Effect */
+    background: rgba(0, 0, 0, 0.3);   /* transparent black */
+    backdrop-filter: blur(15px);      /* main blur effect */
+    -webkit-backdrop-filter: blur(15px); /* for Safari */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* subtle line */
+}
+body {
+    background: #000;
+}

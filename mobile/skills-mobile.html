@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills | Ericsson Portfolio (Mobile)</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="skills-mobile .css"> 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+</head>
+<body>
+
+    <header>
+        <a href="index-mobile.html" class="logo">Ericsson</a>
+        
+        <nav class="navbar" id="mobile-menu">
+            <a href="index-mobile.html">Home</a>
+            <a href="services-mobile.html">Services</a>
+            <a href="skills-mobile.html"active">Skills</a>
+            <a href="education-mobile.html">Education</a>
+            <a href="project-mobile.html">Projects</a>
+            <a href="contact-mobile.html">Contact</a>
+            <a href="hire.html">Hire Me</a>
+        </nav>
+        
+            <div id="menu-icon" class="fa-solid fa-bars hamburger"></div>
+    
+    </header>
+
+    <section class="skills-section" data-aos="fade-up">
+        <h2 class="section-title">
+            <span class="white-text">My</span> 
+            <span class="red-text">Skills</span>
+          </h2>
+          
+
+        <div class="skills-container">
+
+            <div class="skill-card" data-aos="fade-right">
+                <img src="image copy/webdev.png" alt="Web Development" class="skill-img">
+                <h3><i class="fa-solid fa-code"></i> Web Development</h3>
+                <ul>
+                    <li>HTML / CSS</li>
+                    <li>JavaScript</li>
+                    <li>Responsive Design</li>
+                    <li>UI/UX Basics</li>
+                </ul>
+            </div>
+
+            <div class="skill-card" data-aos="fade-left">
+                <img src="image copy/python-skill.png" alt="Python" class="skill-img">
+                <h3><i class="fa-brands fa-python"></i> Python & Programming</h3>
+                <ul>
+                    <li>Python</li>
+                    <li>OOP</li>
+                    <li>NumPy</li>
+                    <li>Pandas</li>
+                    <li>Matplotlib</li>
+                </ul>
+            </div>
+
+            <div class="skill-card" data-aos="fade-right">
+                <img src="image copy/ml-skill.png" alt="Machine Learning" class="skill-img">
+                <h3><i class="fa-solid fa-brain"></i> Machine Learning</h3>
+                <ul>
+                    <li>Regression</li>
+                    <li>Classification</li>
+                    <li>Clustering</li>
+                    <li>Model Evaluation</li>
+                </ul>
+            </div>
+
+            <div class="skill-card" data-aos="fade-left">
+                <img src="image copy/math-skill.jpg" alt="Mathematics" class="skill-img">
+                <h3><i class="fa-solid fa-calculator"></i> Mathematics for ML</h3>
+                <ul>
+                    <li>Linear Algebra</li>
+                    <li>Calculus</li>
+                    <li>Probability</li>
+                    <li>PCA</li>
+                </ul>
+            </div>
+
+            <div class="skill-card" data-aos="fade-right">
+                <img src="image copy/deep-learning.jpg" alt="Deep Learning" class="skill-img">
+                <h3><i class="fa-solid fa-network-wired"></i> Deep Learning</h3>
+                <ul>
+                    <li>Neural Networks</li>
+                    <li>CNNs</li>
+                    <li>RNNs</li>
+                    <li>Optimization</li>
+                </ul>
+            </div>
+
+            <div class="skill-card" data-aos="fade-left">
+                <img src="image copy/applied-skill.jpg" alt="Applied AI" class="skill-img">
+                <h3><i class="fa-solid fa-robot"></i> Applied AI</h3>
+                <ul>
+                    <li>NLP</li>
+                    <li>Computer Vision</li>
+                    <li>Deployment</li>
+                    <li>Web Apps</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="back-btn-container">
+            <a class="back-btn" href="index-mobile.html">← Back to Home</a>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1200 });
+
+        // --- Mobile Menu Toggle Script ---
+        const menuIcon = document.getElementById('menu-icon');
+        const navbar = document.getElementById('mobile-menu');
+
+        menuIcon.onclick = () => {
+            // Toggle the icon between bars and X
+            menuIcon.classList.toggle('fa-xmark'); 
+            menuIcon.classList.toggle('fa-bars');  
+            // Toggle the 'active' class to show/hide the menu
+            navbar.classList.toggle('active');     
+        }
+    </script>
+
+</body>
+</html>

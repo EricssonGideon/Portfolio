@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hire Me - Ericsson</title>
 
-    <title>Hire Me - Ericsson Portfolio</title>
-
-    <!-- Font Awesome Icons -->
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <!-- Your main stylesheet -->
-    <link rel="stylesheet" href="style.css">
-</head>
-
+    <!-- Use Home mobile CSS for header + common styles -->
+    <link rel="stylesheet" href="mobile-style.css"> 
+    <link rel="stylesheet" href="hireme.css">
 <body>
 
-<!-- ========================= HEADER ========================= -->
+<!-- ========================= HEADER (Fixed to match Home) ========================= -->
 <header>
-    <!-- Logo -->
-    <a href="index.html" class="logo">Ericsson</a>
+    <a href="index-mobile.html" class="logo">Ericsson</a>
 
-    <!-- Navigation menu -->
-    <nav>
-        <a href="index.html">Home</a>
-            <a href="services.html">Services</a>
-            <a href="skills.html">Skills</a>
-            <a href="education.html">Education</a>
-            <a href="project.html">Projects</a>
-            <a href="contact.html">Contact</a>
+    <!-- Hamburger -->
+    <div class="hamburger" id="hamburger">
+        <i class="fa-solid fa-bars"></i>
+    </div>
 
-        <!-- Active Page -->
+    <!-- Mobile Nav -->
+    <nav class="navbar" id="mobileNav">
+        <a href="index-mobile.html">Home</a>
+        <a href="services-mobile.html">Services</a>
+        <a href="skills-mobile.html">Skills</a>
+        <a href="education-mobile.html">Education</a>
+        <a href="project-mobile.html">Projects</a>
+        <a href="contact-mobile.html">Contact</a>
         <a href="hire.html" class="active">Hire Me</a>
     </nav>
 </header>
 
+<!-- Spacing for fixed header -->
+<div style="height: 80px;"></div>
 
-<!-- ========================= HIRE SECTION ========================= -->
 <section class="hire-page">
 
     <div class="hire-inner">
@@ -110,8 +111,7 @@
 
             <!-- ===== Why Hire Me ===== -->
             <div class="hire-why">
-                
-                <h2>Why <span class="highlight">Hire Me</span></h2>
+                <h2>Why hire me?</h2>
               
                 <ul>
                     <li><i class="fa-solid fa-check"></i> Clean & maintainable code</li>
@@ -155,12 +155,13 @@
                     <!-- Submit button -->
                     <button type="submit" class="btn hire-submit">Send Proposal</button>
                 </form>
+                <br>
 
                 <!-- Contact info under form -->
                 <div class="contact-info">
-                    <p><i class="fa-solid fa-phone"></i> +94 763999012</p>
-                    <p><i class="fa-solid fa-envelope"></i> robertericsson22@gmail.com</p>
-                    <p><i class="fa-solid fa-location-dot"></i> Norwood, Hatton, Nuwara Eliya</p>
+                    <p><i class="fa-solid fa-phone"></i> +94 763999012</p> <br>
+                    <p><i class="fa-solid fa-envelope"></i> robertericsson22@gmail.com</p> <br>
+                    <p><i class="fa-solid fa-location-dot"></i> Norwood, Hatton, Nuwara Eliya</p> <br>
                 </div>
 
                 <!-- Social Links -->
@@ -288,5 +289,18 @@ function botReply(q) {
     addMessage(response, "bot");
 }
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>AOS.init({ duration: 1200 });</script>
+
+<!-- Mobile Hamburger Toggle (same as Home) -->
+<script>
+const hamburger = document.getElementById("hamburger");
+const mobileNav = document.getElementById("mobileNav");
+
+hamburger.addEventListener("click", () => {
+    mobileNav.classList.toggle("active");
+});
+</script>
+
 </body>
 </html>

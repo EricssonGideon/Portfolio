@@ -1,0 +1,383 @@
+/* ==============================================
+   Google Fonts & Global Reset
+============================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html { font-size: 55%; } /* slightly smaller for mobile */
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: black;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* ==============================================
+   Header (NEW MOBILE HEADER - DO NOT CHANGE)
+============================================== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 2.8rem;
+    color: #b74b4b;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.5s ease;
+    text-decoration: none;
+}
+.logo:hover { transform: scale(1.1); }
+
+.hamburger {
+    font-size: 2.5rem;
+    color: white;
+    cursor: pointer;
+}
+
+nav.navbar {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 25%; /* wider for mobile */
+    background-color: #161616;
+    display: none;
+    flex-direction: column;
+    padding: 2rem;
+    border-left: 3px solid #b74b4b;
+    border-bottom: 3px solid #b74b4b;
+    border-bottom-left-radius: 2rem;
+    gap: 2rem;
+}
+nav.navbar.active { display: flex; }
+
+nav.navbar a {
+    color: white;
+    font-size: 2rem;
+    font-weight: 650;
+}
+nav.navbar a:hover, nav.navbar a.active {
+    color: #b74b4b;
+}
+
+nav a {
+    text-decoration: none;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background: #b74b4b;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+nav a:hover::after,
+nav a.active::after {
+    transform: scaleX(1);
+}
+
+/* ==============================================
+   Hire Me Page (Mobile)
+============================================== */
+.hire-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 2rem 5%;
+    background: #0a0a0a;
+}
+
+/* Left Column */
+.hire-left h1 { font-size: 3.2rem; font-weight: 700; margin-bottom: .6rem; text-align: center;}
+.hire-left h1 span { color: #b74b4b; }
+.hire-subtitle { font-size: 1.6rem; font-weight: 600; margin-bottom: 1rem; color: #d6d6d6; text-align: center;}
+.hire-desc { font-size: 1.4rem; line-height: 1.6; color: #cfcfcf; margin-bottom: 2rem; text-align: center; }
+
+/* Packages */
+.hire-packages { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 1.5rem; 
+    margin-bottom: 2rem; 
+}
+/* ========================= PROFESSIONAL HIRE CARD ANIMATION ========================= */
+.hire-card {
+    background: rgba(183,75,75,0.05);
+    border: 1px solid rgba(183,75,75,0.14);
+    border-radius: 1.4rem;
+    padding: 2rem;
+    width: 100%;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                box-shadow 0.4s ease, 
+                border-color 0.4s ease, 
+                background 0.4s ease;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+}
+
+/* Fade-in & scale-up when visible */
+.hire-card.visible {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+/* Hover / active / tap effect for mobile */
+.hire-card:active, .hire-card:focus {
+    transform: scale(1.05) rotateX(2deg) rotateY(2deg);
+    box-shadow: 0 16px 40px rgba(255, 255, 255, 0.35);
+    border-color: #ff4d5a;
+    background: rgba(183,75,75,0.08);
+}
+
+/* Premium card special highlight */
+.hire-card.premium {
+    background: linear-gradient(145deg, rgba(183,75,75,0.08), rgba(255,95,95,0.12));
+    border-color: rgba(255,95,95,0.3);
+    box-shadow: 0 10px 35px rgba(255,95,95,0.1);
+}
+
+.hire-card.premium:active {
+    background: linear-gradient(145deg, rgba(183,75,75,0.08), rgba(183,75,75,0.08));
+    box-shadow: 0 20px 60px rgba(255,95,95,0.35);
+    border-color: #ff4d5a;
+    transform: scale(1.07) rotateX(3deg) rotateY(3deg);
+}
+
+/* Staggered animation delay for multiple cards */
+.hire-card:nth-child(1) { transition-delay: 0.2s; }
+.hire-card:nth-child(2) { transition-delay: 0.35s; }
+.hire-card:nth-child(3) { transition-delay: 0.5s; }
+
+/* Card content hover animation */
+.hire-card h4 {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+.hire-card:hover h4 {
+    transform: translateY(-2px);
+    color: #ff4d5a;
+}
+
+
+
+/* Card list items with subtle animation */
+.hire-card ul li {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+.hire-card:hover ul li {
+    transform: translateX(3px);
+    color: #ffd1d1;
+}
+
+/* Floating glow effect for premium card */
+@keyframes premiumGlow {
+    0% { box-shadow: 0 10px 30px rgba(255,95,95,0.15); }
+    50% { box-shadow: 0 15px 40px rgba(255,95,95,0.25); }
+    100% { box-shadow: 0 10px 30px rgba(255,95,95,0.15); }
+}
+.hire-card.premium.visible {
+    animation: premiumGlow 3s ease-in-out infinite;
+}
+
+/* Optional 3D tilt effect for mouse */
+.hire-card:hover {
+    transform: rotateX(2deg) rotateY(2deg) scale(1.05);
+    box-shadow: 0 16px 40px rgba(183,75,75,0.3);
+}
+
+/* Mobile tap-friendly shadow */
+@media (hover: none) {
+    .hire-card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 14px 36px rgba(183,75,75,0.25);
+    }
+}
+
+
+/* Why Hire Me Section */
+.hire-why { margin-top: 2rem; }
+.hire-why h2 { font-size: 2.6rem; margin-bottom: 1rem; color: #b74b4b; }
+.hire-why ul { font-size: 1.5rem; line-height: 2rem; color: #dcdcdc; }
+.hire-why ul li { display: flex; align-items: center; gap: .8rem; margin-bottom: .8rem; }
+.hire-why ul li i { color: #b74b4b; font-size: 1.8rem; }
+
+/* Right Column - Contact Card */
+.contact-card { width: 100%; padding: 1.8rem; border-radius: 1rem; background: rgba(183,75,75,0.04);}
+.contact-card h4 { font-size: 2.2rem; margin-bottom: .8rem; text-align: center;}
+.contact-card p { font-size: 1.5rem; line-height: 2rem; margin-bottom: 1.2rem;}
+
+/* Form */
+.hire-form { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 1.5rem; }
+.hire-form input, .hire-form textarea { font-size: 1.4rem; padding: .9rem 1.2rem; border-radius: .8rem; background: #0f0f0f; color: #fff; border: 2px solid rgba(183,75,75,0.12); }
+.hire-form input:focus, .hire-form textarea:focus { border-color: #b74b4b; background: #141414; }
+
+/* Submit button */
+.hire-submit { font-size: 1.5rem; padding: .8rem 2rem; border-radius: 3rem; background: #b74b4b; color: #000; font-weight: 700; border: 2px solid #b74b4b; }
+.hire-submit:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(183,75,75,0.18); }
+
+/* Contact Info & Social */
+.contact-info { margin-top: 1rem; font-size: 1.35rem; color: #dcdcdc; }
+.contact-info p { display:flex; gap:.6rem; align-items:center; margin:.4rem 0; }
+.contact-info i { color: #b74b4b; min-width: 1.4rem; }
+
+.hire-social { display:flex; gap:.8rem; margin-top: .8rem;}
+.hire-social a { width:4rem; height:4rem; font-size:1.3rem; border-radius:50%; border:.12rem solid rgba(183,75,75,0.14); color:#b74b4b; display:inline-flex; align-items:center; justify-content:center; transition: .2s; }
+.hire-social a:hover { background:#b74b4b; color:#000000; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(183,75,75,0.14); }
+
+/* Animations */
+.hire-left, .hire-right, .hire-card, .hire-why, .hire-form, .hire-social {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.visible { opacity: 1 !important; transform: translateY(0) !important; }
+
+/* Chatbot */
+.chatbot-button { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 28px; }
+.chatbot-box { width: 300px; height: 380px; bottom: 90px; right: 20px; border-radius: 12px; }
+.chatbot-header { padding: 12px; }
+.chatbot-content { padding: 12px; }
+.bot-message, .user-message { font-size: 1.3rem; padding: 8px 12px; }
+.chatbot-input-area input { font-size: 1.3rem; padding: 8px 10px; }
+.chatbot-input-area button { font-size: 1.3rem; padding: 8px 12px; }
+
+/* Responsive adjustments done for mobile only */
+
+/* ========================= HIRE PAGE TEXT SIZES ========================= */
+
+/* Main Title */
+.hire-left h1 {
+    font-size: 6rem;  /* bigger main title */
+    font-weight: 700;
+}
+.hire-left h1 span {
+    color: #b74b4b;
+}
+
+/* Subtitle below title */
+.hire-left h3.hire-subtitle {
+    font-size: 2.4rem;  /* bigger subtitle */
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #d6d6d6;
+}
+
+/* Description paragraph */
+.hire-left p.hire-desc {
+    font-size: 2rem;    /* larger text for readability */
+    line-height: 2.2rem;
+    max-width: 100%;    /* fit mobile */
+    color: #cfcfcf;
+    margin-bottom: 2.8rem;
+}
+
+/* Card Title */
+.hire-card h4 {
+    font-size: 2rem;    /* bigger card title */
+    color: #b74b4b;
+    margin-bottom: 0.6rem;
+}
+
+/* Card Description */
+.hire-card .card-desc {
+    font-size: 1.6rem;  /* bigger description */
+    color: #d0cfcf;
+    margin-bottom: 1rem;
+}
+
+/* Card List Items */
+.hire-card ul {
+    font-size: 1.6rem;  /* larger list items */
+    line-height: 2rem;
+    color: #e6e6e6;
+}
+.hire-card ul li::before {
+    font-size: 1.8rem;  /* bigger checkmark */
+}
+
+/* Card Price */
+.hire-card .card-price {
+    font-size: 2rem;    /* larger price */
+    font-weight: 700;
+    color: #fff;
+}
+
+/* Why Hire Me Section */
+.hire-why h2 {
+    font-size: 4rem;    /* bigger section title */
+}
+.hire-why ul {
+    font-size: 2rem;    /* larger list items */
+    line-height: 2.4rem;
+}
+
+/* Contact Card */
+.contact-card h4 {
+    font-size: 3rem;
+}
+.contact-card p {
+    font-size: 2rem;
+    line-height: 2.4rem;
+}
+
+/* Form Inputs */
+.hire-form input, .hire-form textarea {
+    font-size: 1.8rem;
+}
+
+/* Submit Button */
+.hire-submit {
+    font-size: 1.8rem;
+    padding: 1rem 2.8rem;
+}
+
+/* Packages cards */
+.hire-packages { display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 2.8rem; }
+.hire-card { background: rgba(183,75,75,0.04); border: 1px solid rgba(183,75,75,0.14); 
+    padding: 1.8rem; border-radius: 1.2rem; width: 50rem;
+     transition: transform .28s ease, box-shadow .28s ease; }
+.hire-card h4 { font-size: 3rem; color: #b74b4b; margin-bottom: .4rem;text-align: center;}
+.hire-card .card-desc { font-size: 1.6rem; color: #ffffff; margin-bottom: .8rem; text-align: center;}
+.hire-card ul { list-style: none; padding-left: 0; color: #e6e6e6; font-size: 1.45rem; line-height: 1.8;text-align:center; }
+.hire-card ul li::before { content: "✓"; color: #b74b4b; margin-right: .7rem; display: inline-block; width: 1.2rem; }
+.hire-card .card-price {
+    margin-top: 1rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-align: center;
+    color: #fff;
+}
+
+.hire-card.premium {
+    background: linear-gradient(180deg, rgba(0,0,0,0.1)), rgba(0, 0, 0, 0.1);
+    border-color: rgba(242, 238, 234, 0.25);
+    box-shadow: 0 6px 30px rgba(255, 215, 0, 0.5);
+}
+.hire-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgb(114, 114, 17); }
+

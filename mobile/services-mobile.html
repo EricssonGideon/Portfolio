@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Ericsson</title>
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Use Home mobile CSS for header + common styles -->
+    <link rel="stylesheet" href="services.css">
+</head>
+<body>
+
+<!-- ========================= HEADER (Fixed to match Home) ========================= -->
+<header>
+    <a href="index-mobile.html" class="logo">Ericsson</a>
+
+    <!-- Hamburger -->
+    <div class="hamburger" id="hamburger">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <!-- Mobile Nav -->
+    <nav class="navbar" id="mobileNav">
+        <a href="index-mobile.html">Home</a>
+        <a href="services-mobile.html" class="active">Services</a>
+        <a href="skills-mobile.html">Skills</a>
+        <a href="education-mobile.html">Education</a>
+        <a href="project-mobile.html">Projects</a>
+        <a href="contact-mobile.html">Contact</a>
+        <a href="hire.html">Hire Me</a>
+    </nav>
+</header>
+
+<!-- Spacing for fixed header -->
+<div style="height: 5px;"></div>
+
+<!-- ================= HERO ================= -->
+<section class="home">
+    <div class="home-content" data-aos="fade-up">
+        <h1>My <span>Services</span></h1>
+        <p>Professional web solutions crafted with clean design and solid performance.
+            Explore my range of professional services designed to elevate your digital presence. 
+            From responsive websites to custom scripts and Python projects, I deliver clean, efficient, and high-quality solutions tailored to your needs.
+            <br> <br> I provide modern and efficient web development and Python project development solutions tailored to your needs. 
+            Whether you’re looking for a responsive website, interactive web applications, or custom Python programs,
+             I focus on creating high-quality, scalable, and user-friendly solutions. 
+             My goal is to bring your ideas to life with clean code, innovative designs, and practical functionality.
+    
+          </p>
+    </div>
+
+   
+</section>
+
+<!-- ================= SERVICES CARDS ================= -->
+<section class="services-section">
+    <div class="services-container">
+
+        <!-- Web Development -->
+        <article class="service-card" data-aos="fade-up">
+            <img src="image copy/webdev.png" alt="Web Development">
+            <div class="service-content">
+                <h3><i class="fa-solid fa-code"></i> Web Development</h3>
+                <p>Responsive websites with clean UI, mobile-ready, and SEO optimized.</p>
+                <ul>
+                    <li><i class="fa-solid fa-circle-check"></i> Basic: Single-page portfolio</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Standard: Multi-page business site</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Premium: Advanced web apps</li>
+                </ul>
+                <a href="hire.html" class="btn">Hire Me</a>
+            </div>
+        </article>
+
+        <!-- Script Writing -->
+        <article class="service-card" data-aos="fade-up">
+            <img src="image copy/scriptwriting.png" alt="Script Writing">
+            <div class="service-content">
+                <h3><i class="fa-solid fa-file-code"></i> Script Writing</h3>
+                <p>Automation scripts, AI tools, utilities, and optimized code.</p>
+                <ul>
+                    <li><i class="fa-solid fa-circle-check"></i> Basic: Simple scripts</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Standard: Multi-script bundle</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Premium: Complex tools</li>
+                </ul>
+                <a href="hire.html" class="btn">Hire Me</a>
+            </div>
+        </article>
+
+        <!-- Python Projects -->
+        <article class="service-card premium" data-aos="fade-up">
+            <img src="image copy/pythonproject.png" alt="Python Projects">
+            <div class="service-content">
+                <h3><i class="fa-brands fa-python"></i> Python Projects</h3>
+                <p>Custom Python apps, automation, bots, AI utilities, and more.</p>
+                <ul>
+                    <li><i class="fa-solid fa-circle-check"></i> Basic: Mini projects</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Standard: Medium apps</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Premium: Full system</li>
+                </ul>
+                <a href="hire.html" class="btn">Hire Me</a>
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<!-- ================= SCRIPTS ================= -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+AOS.init({ duration: 1200 });
+
+<!-- Mobile Hamburger Toggle (same as Home) -->
+
+const hamburger = document.getElementById("hamburger");
+const mobileNav = document.getElementById("mobileNav");
+
+hamburger.addEventListener("click", () => {
+    mobileNav.classList.toggle("active");
+});
+</script>
+</body>
+</html>

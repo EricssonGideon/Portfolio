@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ericsson Portfolio - Mobile</title>
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="mobile-style.css">
+    
+    <!-- AOS Animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+</head>
+<body>
+
+<!-- ========================= HEADER ========================= -->
+<header>
+    <a href="index-mobile.html" class="logo">Ericsson</a>
+
+    <!-- Mobile Hamburger -->
+    <div class="hamburger" id="hamburger">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <nav class="navbar" id="mobileNav">
+        <a href="index-mobile.html" class="active">Home</a>
+        <a href="services-mobile.html">Services</a>
+        <a href="skills-mobile.html">Skills</a>
+        <a href="education-mobile.html">Education</a>
+        <a href="project-mobile.html">Projects</a>
+        <a href="contact-mobile.html">Contact</a>
+        <a href="hire.html">Hire Me</a>
+    </nav>
+</header>
+
+<!-- ========================= HOME / HERO SECTION ========================= -->
+<section class="home">
+    <div class="hero-bg"></div> <!-- Animated background -->
+    <div class="home-content" data-aos="fade-up">
+        <h1>Hello, I'm <span>Ericsson</span></h1>
+        <h3 class="typing-text">I'm a <span id="typed"></span></h3>
+        <p>I love creating smart, user-focused solutions and exploring new technologies.
+           This portfolio showcases my journey in building websites, 
+           Python projects, and stepping into the world of AI.</p>
+        <p>I build modern websites, AI tools, and interactive web applications. Check out my work and services.</p>
+
+        <!-- Buttons -->
+        <div class="home-buttons">
+            <a href="hire.html" class="btn">Hire Me</a>
+            <a href="project-mobile.html" class="btn">View Projects</a>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/robert-robertericsson6" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/EricssonGideon" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.instagram.com/robertericsson6" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1CfaP8BP6N/?mibextid=wwXIfr" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+    </div>
+
+    <!-- Hero image -->
+    <div class="home-img" data-aos="fade-left">
+        <img src="image copy/main.jpg" alt="Ericsson Profile">
+    </div>
+</section>
+
+<!-- ========================= SCRIPTS ========================= -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+AOS.init({ duration: 1200 });
+
+// -------------------- TYPING ANIMATION --------------------
+const roles = ["Web Developer", "AI Engineer", "Script Writer", "Web Designer"];
+let roleIndex = 0, charIndex = 0;
+const roleEl = document.getElementById("typed");
+let typingActive = false;
+
+function type() {
+    if (typingActive) return;
+    typingActive = true;
+    roleEl.textContent = "";
+    function _typeChar() {
+        if (charIndex < roles[roleIndex].length) {
+            roleEl.textContent += roles[roleIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(_typeChar, 120);
+        } else {
+            setTimeout(() => erase(), 2000);
+        }
+    }
+    _typeChar();
+}
+function erase() {
+    function _eraseChar() {
+        if (charIndex > 0) {
+            charIndex--;
+            roleEl.textContent = roles[roleIndex].substring(0, charIndex);
+            setTimeout(_eraseChar, 80);
+        } else {
+            roleIndex = (roleIndex + 1) % roles.length;
+            typingActive = false;
+            setTimeout(type, 300);
+        }
+    }
+    _eraseChar();
+}
+document.addEventListener("DOMContentLoaded", () => { if (roleEl) setTimeout(type, 500); });
+
+// -------------------- Mobile Navbar Toggle --------------------
+const hamburger = document.getElementById("hamburger");
+const mobileNav = document.getElementById("mobileNav");
+hamburger.addEventListener("click", () => {
+    mobileNav.classList.toggle("active");
+});
+</script>
+
+<!-- Chatbot Button -->
+<div class="chatbot-button" onclick="toggleChatbot()">
+  <i class="fa-solid fa-robot"></i>
+</div>
+
+<div class="chatbot-box" id="chatbotBox" style="display:none; flex-direction:column;">
+  <div class="chatbot-header">
+      <h3>AI Project Assistant</h3>
+      <span onclick="toggleChatbot()">×</span>
+  </div>
+  <div class="chatbot-content" id="chatContent">
+      <div class="bot-message">
+         <div class="text">Hi Ericsson! Ask me about any project.</div>
+         <div class="timestamp">--:--</div>
+      </div>
+  </div>
+  <div class="chatbot-input-area">
+      <input type="text" id="userInput" placeholder="Ask about your project..." onkeydown="if(event.key==='Enter') sendMessage()">
+      <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<script>
+// ---------- Chatbot JS ----------
+function toggleChatbot() {
+  const bot = document.getElementById("chatbotBox");
+  bot.style.display = (bot.style.display === "flex") ? "none" : "flex";
+  if (bot.style.display === "flex") setTimeout(() => document.getElementById("userInput").focus(), 120);
+}
+function addMessage(txt, type) {
+  const box = document.getElementById("chatContent");
+  let wrapper = document.createElement("div");
+  wrapper.className = (type === "user") ? "user-message" : "bot-message";
+  let message = document.createElement("div");
+  message.className = "text"; message.innerText = txt;
+  let time = document.createElement("div");
+  time.className = "timestamp";
+  let now = new Date();
+  time.innerText = now.getHours().toString().padStart(2,"0") + ":" + now.getMinutes().toString().padStart(2,"0");
+  wrapper.appendChild(message); wrapper.appendChild(time);
+  box.appendChild(wrapper); box.scrollTop = box.scrollHeight;
+}
+function showTyping() {
+  const box = document.getElementById("chatContent");
+  if (document.getElementById("typing")) return;
+  let typing = document.createElement("div");
+  typing.id = "typing"; typing.className = "bot-message";
+  let dots = document.createElement("div"); dots.className = "text"; dots.innerText = "Typing";
+  let anim = document.createElement("span"); anim.className = "dots"; anim.innerText = "..."; dots.appendChild(anim);
+  let time = document.createElement("div"); time.className = "timestamp"; time.innerText = "";
+  typing.appendChild(dots); typing.appendChild(time);
+  box.appendChild(typing); box.scrollTop = box.scrollHeight;
+}
+function removeTyping() { let t = document.getElementById("typing"); if(t) t.remove(); }
+function sendMessage() {
+  let input = document.getElementById("userInput"); let text = input.value.trim(); if(!text) return;
+  addMessage(text,"user"); input.value=""; showTyping();
+  const delay = Math.min(1600 + text.length*30,3000);
+  setTimeout(()=>{ botReply(text); },delay);
+}
+function botReply(q) {
+  q = q.toLowerCase(); let response = "";
+  if(q.includes("portfolio")) response = "Your Portfolio Website is a clean, modern and responsive showcase of your skills and services.";
+  else if(q.includes("ai") || q.includes("chatbot")) response = "Your AI Chatbot uses JavaScript logic and can be upgraded later with ML or NLP.";
+  else if(q.includes("ecommerce") || q.includes("shop")) response = "Your E-commerce project includes product UI, cart system and responsive layout.";
+  else if(q.includes("python")) response = "Your Python projects include automation tools and backend scripts.";
+  else response = "I don't know that yet, but you can teach me! 😊";
+  removeTyping(); addMessage(response,"bot");
+  const bot = document.getElementById("chatbotBox"); if(bot.style.display!=="flex") bot.style.display="flex";
+  setTimeout(()=>document.getElementById("userInput").focus(),100);
+}
+</script>
+
+</body>
+</html>
